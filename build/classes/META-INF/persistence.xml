@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="PruebaUsuario" transaction-type="RESOURCE_LOCAL">
+		<class>ec.edu.epn.adminusr.modelo.entity.Condominio</class>
+		<class>ec.edu.epn.adminusr.modelo.entity.CuentasXCobrar</class>
+		<class>ec.edu.epn.adminusr.modelo.entity.CuentasXPagar</class>
+		<class>ec.edu.epn.adminusr.modelo.entity.Proveedore</class>
+		<class>ec.edu.epn.adminusr.modelo.entity.TipoUh</class>
+		<class>ec.edu.epn.adminusr.modelo.entity.UnidadHabitacional</class>
+		<class>ec.edu.epn.adminusr.modelo.entity.Usuario</class>
+		<properties>
+			<property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;databaseName=epnweb"/>
+			<property name="javax.persistence.jdbc.user" value="epnweb"/>
+			<property name="javax.persistence.jdbc.password" value="epnweb"/>
+			<property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+		</properties>
+	</persistence-unit>
+</persistence>
