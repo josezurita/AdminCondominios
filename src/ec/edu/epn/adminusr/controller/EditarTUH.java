@@ -42,7 +42,7 @@ public class EditarTUH extends HttpServlet {
 			ServicioTUH suh = new ServicioTUH();
 			String resultado = suh.actualizarTUH(1, txtNombreTUH, txtDescripcion);
 			request.setAttribute("msgExito", resultado);
-			request.getRequestDispatcher("adminProv.jsp").forward(request, response);
+			request.getRequestDispatcher("adminTUH.jsp").forward(request, response);
 
 		}
 	

@@ -20,8 +20,12 @@
 		<div class="col-md-12">
 			<div class="page-header">
 				<h1>
-					¡Bienvenido, <%out.print(usuario.getNombreCompleto()); %>! <small>Selecciona una opción del menú superior para comenzar</small>
+					¡Bienvenido, <%out.print(usuario.getNombreCompleto()); %>! 
 				</h1>
+				<small>Selecciona una opción del menú superior para comenzar</small>
+				<h2>
+				
+				</h2>
 				<%ServicioCondominio sc = new ServicioCondominio();
 				List<Condominio> condominios = sc.consultarCondominiosDeUsuario(usuario.getIdUsuario());
 				Condominio c = condominios.get(0);
@@ -32,6 +36,7 @@
 		</div>
 	</div>
 </div>
+
 <jsp:include page="piePagina.jsp" />
 </body>
 </html>

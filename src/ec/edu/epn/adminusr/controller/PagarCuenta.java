@@ -52,7 +52,7 @@ public class PagarCuenta extends HttpServlet {
 				
 		//Invocación Modelo
 		ServicioCXP su = new ServicioCXP();
-		String resultado = su.actualizarCuentaPagar(1,Integer.parseInt(txtCondominio), Integer.parseInt(txtProveedor), 
+		String resultado = su.actualizarCuentaPagar(2,Integer.parseInt(txtCondominio), Integer.parseInt(txtProveedor), 
 				txtIdentificador,txtDescripcion, txtFechaEmision, txtFechaPago, new BigDecimal(txtValor), new Boolean(txtEstado));
 		request.setAttribute("msgExito", resultado);
 		request.getRequestDispatcher("adminEgresos.jsp").forward(request, response);

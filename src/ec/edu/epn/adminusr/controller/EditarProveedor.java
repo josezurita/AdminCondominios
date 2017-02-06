@@ -44,7 +44,7 @@ public class EditarProveedor extends HttpServlet {
 			ServicioProveedor sp = new ServicioProveedor();
 			String resultado = sp.actualizarProveedor(1, txtNombre, txtDescripcion);
 			request.setAttribute("msgExito", resultado);
-			request.getRequestDispatcher("adminProv.jsp").forward(request, response);
+			request.getRequestDispatcher("adminCon.jsp").forward(request, response);
 
 		}
 	

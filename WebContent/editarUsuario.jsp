@@ -10,41 +10,52 @@
 <title>Ingreso de Datos de Usuario</title>
 </head>
 <body>
-   <%@include file="cabecera.txt" %>
-    
-    <h1>Editar de Datos de Usuario</h1>
-    <%
-       //se cargan los datos del usuario que se va a editar
-	    Usuario u =(Usuario) request.getAttribute("usuario");
-	    if (u==null){
-	 	   u=new Usuario();
-	 	   u.setNombreCompleto("");
-	 	   u.setUsername("");
-	    }
-    %> 
-    
-    <form  action="ActualizarUsuario"  method="post">
-      <div>
-          Codigo: <%= u.getIdUsuario()%>
-          <input type="hidden" name="txtCodigo" value="<%= u.getIdUsuario()%>"/> 
-      </div>    
-      <div>
-          Nombre Completo:  <input type="text" name="txtNombre" value="<%= u.getNombreCompleto()%>"/> 
-      </div>    
-      <div>
-          Username:  <input type="text" name="txtUsername" value="<%= u.getUsername()%>"/> 
-      </div>    
-      <div>
-          Clave:  <input type="password" name="txtClave" /> 
-      </div>    
-      <div>
-          Confirmación Clave:  <input type="password" name="txtConfirmacionClave" /> 
-      </div>
-      <div>
-            <input type="submit" value="Actualizar Datos" /> 
-      </div>  
-    </form>
-
+   <%@include file="cabecera.jsp" %>
+     <div class="container-fluid">
+    		<div class="view">
+				<h3 contenteditable="true" class="text-primary">Editar Usuarios</h3>
+			</div>
+	    <%
+	       //se cargan los datos del usuario que se va a editar
+		    Usuario u =(Usuario) request.getAttribute("usuario");
+		    if (u==null){
+		 	   u=new Usuario();
+		 	   u.setNombreCompleto("");
+		 	   u.setUsername("");
+		    }
+	    %> 
+	    
+	    <form  action="EditarUsuario"  method="post">
+	       <div class="form-group">
+		       	<label for="codigo"> Codigo: <%= u.getIdUsuario()%></label>
+	    		<input type="hidden" class="form-control" name="txtCodigo" value="<%= u.getIdUsuario()%>"/>
+	       </div>  
+	       
+	    	<div class="form-group">
+		     	<label for="nombreCompleto">Nombre Completo:</label>
+		    	<input type="text" class="form-control" name="txtNombre" value="<%= u.getNombreCompleto()%>"/>
+  			</div>
+   
+			<div class="form-group">
+		     	<label for="Username">Username:</label>
+		    	<input type="text" class="form-control" name="txtUsername" value="<%= u.getUsername()%>"/>
+		  	</div>
+  	
+		  	<div class="form-group">
+		     	<label for="exampleInputPassword1">Clave</label>
+		    	<input type="password" class="form-control" name="txtClave" placeholder="Password"/>
+		 	</div>
+ 	
+		 	<div class="form-group">
+		     	<label for="exampleInputPassword1">Confirmación Clave:</label>
+		    	<input type="password" class="form-control" name="txtConfirmacionClave" placeholder="Password"/>
+		 	</div>
+		 	
+	      <div class="form-group">
+	            <input type="submit" value="Actualizar Datos" /> 
+	      </div>  
+	    </form>
+	</div>
    <jsp:include page="piePagina.jsp" />
 </body>
 </html>

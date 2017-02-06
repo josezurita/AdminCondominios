@@ -40,7 +40,7 @@
 							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gestión de condominios<strong class="caret"></strong></a>
 							<ul class="dropdown-menu">
 								<li>
-									<a href="#">Condominios</a>
+									<a href="adminCon.jsp">Condominios</a>
 								</li>
 								<li>
 									<a href="adminUnidadH.jsp">Unidades Habitacionales</a>
@@ -78,19 +78,11 @@
 								<li class="divider">
 								</li>
 								<li>
-									<a href="#">Parámetros</a>
-								</li>
+								
 							</ul>
 						</li>
 					</ul>
-					<form class="navbar-form navbar-left" role="search">
-						<div class="form-group">
-							<input type="text" class="form-control">
-						</div> 
-						<button type="submit" class="btn btn-default">
-							Buscar
-						</button>
-					</form>
+					
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
 							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuario<strong class="caret"></strong></a>
@@ -100,22 +92,7 @@
 								</li>
 								<li class="divider">
 								</li>
-								<li>
-									<a href="#">Cambiar Condominio</a>
-								</li>
-								<li class="divider">
-								</li>
-								<li>
-									<a href="#">Editar Perfil</a>
-								</li>
-								<li>
-									<a href="#">Cambiar contraseña</a>
-								</li>
-								<li class="divider">
-								</li>
-								<li>
-									<a href="#">Salir</a>
-								</li>
+							
 							</ul>
 						</li>
 					</ul>
