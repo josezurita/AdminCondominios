@@ -25,8 +25,8 @@
     
     <form  action="ActualizarUsuario"  method="post">
       <div>
-          Codigo: <%= u.getCodigo()%>
-          <input type="hidden" name="txtCodigo" value="<%= u.getCodigo()%>"/> 
+          Codigo: <%= u.getIdUsuario()%>
+          <input type="hidden" name="txtCodigo" value="<%= u.getIdUsuario()%>"/> 
       </div>    
       <div>
           Nombre Completo:  <input type="text" name="txtNombre" value="<%= u.getNombreCompleto()%>"/> 
