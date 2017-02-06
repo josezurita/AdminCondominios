@@ -1,0 +1,9 @@
+<header>
+   <img src="images/logo.jpg" alt="" />
+</header>
+<nav>
+   <ul>
+      <li><a href="index.jsp">Inicio</a> </li>
+      <li><a href="AdminUsr.jsp">Administracion de Usuarios</a> </li>
+   </ul> 
+</nav>
