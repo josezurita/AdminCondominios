@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ec.edu.epn.adminusr.modelo.entity.Usuario;
+import ec.edu.epn.adminusr.modelo.entity.vo.UsuarioVO;
 import ec.edu.epn.adminusr.modelo.service.ServicioUsuario;
 
 /**
@@ -32,7 +33,7 @@ public class ConfirmarEliminacion extends HttpServlet {
 		int id = Integer.parseInt(txtId);
 		
 		ServicioUsuario su= new ServicioUsuario();
-		Usuario u = su.consultarUsuario(id);
+		UsuarioVO u = su.consultarUsuario(id);
 		
 		request.setAttribute("usuario", u);
 		

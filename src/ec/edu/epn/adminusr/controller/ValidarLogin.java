@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ec.edu.epn.adminusr.modelo.entity.Usuario;
+import ec.edu.epn.adminusr.modelo.entity.vo.UsuarioVO;
 import ec.edu.epn.adminusr.modelo.service.ServicioUsuario;
 
 /**
@@ -44,7 +45,7 @@ public class ValidarLogin extends HttpServlet {
 		String txtUser = request.getParameter("txtUser");
 		String txtPassword = request.getParameter("txtPassword");
 		ServicioUsuario su= new ServicioUsuario();
-		Usuario u = su.getUsuario(txtUser);
+		UsuarioVO u = su.getUsuario(txtUser);
 		if(u == null) {
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);

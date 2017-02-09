@@ -7,12 +7,28 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 
 import ec.edu.epn.adminusr.modelo.entity.Condominio;
 import ec.edu.epn.adminusr.modelo.entity.Usuario;
+import ec.edu.epn.adminusr.modelo.entity.vo.UsuarioVO;
 
+@Path("ServicioCondominio")
 public class ServicioCondominio {
-	public String crearCondominio (Condominio condominio) {
+	
+//	@POST
+//	@Path("crearCondominio")
+//	@Consumes({MediaType.APPLICATION_JSON})
+//	@Produces({MediaType.TEXT_PLAIN})
+	public String crearCondominio (Condominio condominio) { //@FormParam("condominio")
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("PruebaUsuario");
 		EntityManager em =emf.createEntityManager();
 		em.getTransaction().begin();
@@ -21,30 +37,36 @@ public class ServicioCondominio {
 		String mensaje = "Condominio "+ condominio.getNombre()+" creado correctamente";
 		return mensaje;
 	}
-	public String actualizarCondominio (int idC, int id, String nombre, String direccion, String descripcion, String telefono, String logo, BigDecimal balance) {
+	
+	@PUT
+	@Path("actualizarCondominio")
+	public String actualizarCondominio (@QueryParam("idC") int idC, @QueryParam("id") int id, @QueryParam("nombre") String nombre, @QueryParam("direccion") String direccion, @QueryParam("descripcion") String descripcion, @QueryParam("telefono") String telefono, @QueryParam("logo") String logo, @QueryParam("balance") BigDecimal balance) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("PruebaUsuario");
 		EntityManager em =emf.createEntityManager();
 		em.getTransaction().begin();
-		Condominio user = em.find(Condominio.class, idC);
+		Condominio condominio = em.find(Condominio.class, idC);
 		
 		ServicioUsuario su = new ServicioUsuario();
-		Usuario u = new Usuario();
+		UsuarioVO u = new UsuarioVO();
 		u = su.consultarUsuario(id);
-		user.setUsuario(u);
-		user.setNombre(nombre);
-		user.setDescripcion(descripcion);
-		user.setDireccion(direccion);
-		user.setTelefono(telefono);
-		user.setLogo(null);
-		user.setBalance(balance);
+		condominio.setUsuario(u.toUsuario());
+		condominio.setNombre(nombre);
+		condominio.setDescripcion(descripcion);
+		condominio.setDireccion(direccion);
+		condominio.setTelefono(telefono);
+		condominio.setLogo(null);
+		condominio.setBalance(balance);
 			
-		em.merge(user);
+		em.merge(condominio);
 		em.getTransaction().commit();
-		String mensaje = "Condominio "+user.getNombre()+" actualizado correctamente";
+		String mensaje = "Condominio "+condominio.getNombre()+" actualizado correctamente";
 		return mensaje;
 	}
 	
-	public Condominio consultarCondominio (int id){
+	@GET
+	@Path("consultarCondominio")
+	@Produces({MediaType.APPLICATION_JSON})
+	public Condominio consultarCondominio (@QueryParam("id") int id){
 		EntityManagerFactory emf = 
 	       Persistence.createEntityManagerFactory(
 	    		   "PruebaUsuario");

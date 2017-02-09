@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ec.edu.epn.adminusr.modelo.entity.Usuario;
+import ec.edu.epn.adminusr.modelo.entity.vo.UsuarioVO;
 import ec.edu.epn.adminusr.modelo.service.ServicioUsuario;
 
 /**
@@ -33,7 +34,7 @@ public class BuscarUsuarios extends HttpServlet {
 		String txtUsuarioBusqueda = request.getParameter("txtUsuarioBusqueda");
 		
 		ServicioUsuario su= new ServicioUsuario();
-		List<Usuario> u = su.consultarUsuarios(txtUsuarioBusqueda);
+		List<UsuarioVO> u = su.consultarUsuarios(txtUsuarioBusqueda);
 		
 		request.setAttribute("usuarios", u);
 		

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insert title here</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script src="js/angular.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</head>
+<body ng-app="admCon" ng-controller="crearUsr">
+
+
+
+	<div class="container-fluid">
+		<div class="view">
+			<h3 contenteditable="true" class="text-primary">Ingreso de Usuario</h3>
+		</div>
+		<form name="frmCrearUsr">
+			<div class="form-group">
+				<label for="nombreCompleto">Nombre Completo:</label>
+				<input type="text" class="form-group" name="txtNombre" ng-model="usuario.nombreCompleto" />
+			</div>
+
+			<div class="form-group">
+				<label for="Username">Username:</label>
+				<input type="text" name="txtUsername" ng-model="usuario.username" class="form-group" />
+			</div>
+
+			<div class="form-group">
+				<label for="exampleInputPassword1">Clave</label> <input type="password" name="txtClave" ng-model="usuario.clave" class="form-group" />
+			</div>
+
+			<div class="form-group">
+				<label for="exampleInputPassword1">Confirmación Clave:</label> <input type="password" name="txtConfirmacionClave" ng-model="confirmacionClave" class="form-group" />
+			</div>
+
+			<div class="form-group">
+				<Button class="btn btn-primary ng-click="crearUsuario()">Crear Usuario</Button>
+			</div>
+
+		</form>
+	</div>
+
+</body>
+</html>

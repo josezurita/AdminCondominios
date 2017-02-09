@@ -1,3 +1,4 @@
+<%@page import="ec.edu.epn.adminusr.modelo.entity.vo.UsuarioVO"%>
 <%@page import="java.util.List"%>
 <%@page import="ec.edu.epn.adminusr.modelo.service.ServicioUsuario"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -41,8 +42,8 @@
         <div class="selectContainer">
             <select class="form-control" name="txtUsuario">
             	<% ServicioUsuario sp = new ServicioUsuario();
-     			List<Usuario> usuarios = sp.consultarUsuarios("%");
-     			for (Usuario p:usuarios){%>
+     			List<UsuarioVO> usuarios = sp.consultarUsuarios("%");
+     			for (UsuarioVO p:usuarios){%>
      				<option value="<%= p.getIdUsuario()%>"><%=p.getNombreCompleto()%></option>
      			<%}%>  </select>
         </div>

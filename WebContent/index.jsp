@@ -5,6 +5,7 @@
 <head>
     <title>Inicio</title>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <script src="js/angular.min.js"></script>
 </head>
 <body>
    <%@include file="cabeceraLogin.jsp" %>

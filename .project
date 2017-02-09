@@ -33,4 +33,16 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>WebContent/js/angular.min.js</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/angular.min.js</locationURI>
+		</link>
+		<link>
+			<name>WebContent/js/bootstrap.js</name>
+			<type>1</type>
+			<location>C:/Users/USRBET/AppData/Local/Temp/Rar$DRa0.091/pokemon/pruebatwj/assets/Aplicacion/Librerias/CSS/js/bootstrap.js</location>
+		</link>
+	</linkedResources>
 </projectDescription>
