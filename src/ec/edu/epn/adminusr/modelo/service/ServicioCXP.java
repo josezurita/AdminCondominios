@@ -7,13 +7,27 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 
 import ec.edu.epn.adminusr.modelo.entity.Condominio;
 import ec.edu.epn.adminusr.modelo.entity.CuentasXPagar;
 import ec.edu.epn.adminusr.modelo.entity.Proveedore;
 
-
+@Path("ServicioCXP")
+@Produces("application/json")
 public class ServicioCXP {
+	
+	@POST
+	@Path("crearCuentaPagar")
+	@Consumes({MediaType.APPLICATION_JSON})
 	public String crearCuentaPagar (CuentasXPagar cp) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("PruebaUsuario");
 		EntityManager em =emf.createEntityManager();
@@ -24,9 +38,12 @@ public class ServicioCXP {
 		return mensaje;
 	}
 	
-	public String actualizarCuentaPagar (int id, int idCondominio, int idProveedore, 
-			String identificador, String descripcion, String fechaemision ,String fechapago,
-			BigDecimal valor, Boolean estado) {
+	@PUT
+	@Path("actualizarCuentaPagar")
+	@Consumes({MediaType.APPLICATION_JSON})
+	public String actualizarCuentaPagar (@QueryParam("id")int id, @QueryParam("idCondominio")int idCondominio, @QueryParam("idProveedore")int idProveedore, 
+			@QueryParam("identificador")String identificador, @QueryParam("descripcion")String descripcion, @QueryParam("fechaemision")String fechaemision, @QueryParam("fechapago")String fechapago,
+			@QueryParam("valor")BigDecimal valor, @QueryParam("estado")Boolean estado) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("PruebaUsuario");
 		EntityManager em =emf.createEntityManager();
 		em.getTransaction().begin();
@@ -48,8 +65,11 @@ public class ServicioCXP {
 		String mensaje = "Cuenta por pagar efectuada correctamente";
 		return mensaje;
 	}
-			
-	public CuentasXPagar consultarCuentaPagar (int id){
+	
+	@GET
+	@Path("consultarCuentaPagar")
+	@Produces({MediaType.APPLICATION_JSON})
+	public CuentasXPagar consultarCuentaPagar (@QueryParam("id")int id){
 		EntityManagerFactory emf = 
 	       Persistence.createEntityManagerFactory(
 	    		   "PruebaUsuario");
@@ -58,7 +78,10 @@ public class ServicioCXP {
 		return cxp;
 	}
 	
-	public List<ServicioCXP> consultarCuentasPagar (String identificador){
+	@GET
+	@Path("consultarCuentasPagar")
+	@Produces({MediaType.APPLICATION_JSON})
+	public List<ServicioCXP> consultarCuentasPagar (@QueryParam("identificador")String identificador){
 		EntityManagerFactory emf = 
 	       Persistence.createEntityManagerFactory(
 	    		   "PruebaUsuario");
@@ -70,7 +93,10 @@ public class ServicioCXP {
 		return query.getResultList();
 	}
 	
-	public List<ServicioCXP> consultarCuentasPagarTrue(String identificador){
+	@GET
+	@Path("consultarCuentasPagarTrue")
+	@Produces({MediaType.APPLICATION_JSON})
+	public List<ServicioCXP> consultarCuentasPagarTrue(@QueryParam("identificador")String identificador){
 		EntityManagerFactory emf = 
 	       Persistence.createEntityManagerFactory(
 	    		   "PruebaUsuario");
@@ -81,9 +107,11 @@ public class ServicioCXP {
 			  
 		return query.getResultList();
 	}
-		
-	public String eliminarCuentaPagar (CuentasXPagar c){
-		String mensaje="Usuario eliminado Exitosamente";
+	
+	@DELETE
+	@Path("eliminarCuentaPagar")
+	public String eliminarCuentaPagar (@QueryParam("id")int id){
+		String mensaje="Cuenta eliminada Exitosamente";
 		return mensaje;
 	}
 
