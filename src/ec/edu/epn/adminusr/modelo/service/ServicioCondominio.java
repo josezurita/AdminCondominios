@@ -24,11 +24,11 @@ import ec.edu.epn.adminusr.modelo.entity.vo.UsuarioVO;
 @Path("ServicioCondominio")
 public class ServicioCondominio {
 	
-//	@POST
-//	@Path("crearCondominio")
-//	@Consumes({MediaType.APPLICATION_JSON})
-//	@Produces({MediaType.TEXT_PLAIN})
-	public String crearCondominio (Condominio condominio) { //@FormParam("condominio")
+	@POST
+	@Path("crearCondominio")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.TEXT_HTML})
+	public String crearCondominio (Condominio condominio) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("PruebaUsuario");
 		EntityManager em =emf.createEntityManager();
 		em.getTransaction().begin();
@@ -40,26 +40,28 @@ public class ServicioCondominio {
 	
 	@PUT
 	@Path("actualizarCondominio")
-	public String actualizarCondominio (@QueryParam("idC") int idC, @QueryParam("id") int id, @QueryParam("nombre") String nombre, @QueryParam("direccion") String direccion, @QueryParam("descripcion") String descripcion, @QueryParam("telefono") String telefono, @QueryParam("logo") String logo, @QueryParam("balance") BigDecimal balance) {
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.TEXT_HTML})
+	public String actualizarCondominio (Condominio condominio) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("PruebaUsuario");
 		EntityManager em =emf.createEntityManager();
 		em.getTransaction().begin();
-		Condominio condominio = em.find(Condominio.class, idC);
+		Condominio condominioActualizado = em.find(Condominio.class, condominio.getIdCondominio());
 		
 		ServicioUsuario su = new ServicioUsuario();
-		UsuarioVO u = new UsuarioVO();
-		u = su.consultarUsuario(id);
-		condominio.setUsuario(u.toUsuario());
-		condominio.setNombre(nombre);
-		condominio.setDescripcion(descripcion);
-		condominio.setDireccion(direccion);
-		condominio.setTelefono(telefono);
-		condominio.setLogo(null);
-		condominio.setBalance(balance);
+		UsuarioVO user = new UsuarioVO();
+		user = su.consultarUsuario(condominio.getUsuario().getIdUsuario());
+		condominioActualizado.setUsuario(user.toUsuario());
+		condominioActualizado.setNombre(condominio.getNombre());
+		condominioActualizado.setDescripcion(condominio.getDescripcion());
+		condominioActualizado.setDireccion(condominio.getDireccion());
+		condominioActualizado.setTelefono(condominio.getTelefono());
+		condominioActualizado.setLogo(null);
+		condominioActualizado.setBalance(condominio.getBalance());
 			
-		em.merge(condominio);
+		em.merge(condominioActualizado);
 		em.getTransaction().commit();
-		String mensaje = "Condominio "+condominio.getNombre()+" actualizado correctamente";
+		String mensaje = "Condominio "+condominioActualizado.getNombre()+" actualizado correctamente";
 		return mensaje;
 	}
 	
@@ -75,7 +77,11 @@ public class ServicioCondominio {
 		return c;
 	}
 	
-	public List<Condominio> consultarCondominios (String nombre){
+	
+	@GET
+	@Path("consultarCondominios")
+	@Produces({MediaType.APPLICATION_JSON})
+	public List<Condominio> consultarCondominios (@QueryParam("nombre") String nombre){
 		EntityManagerFactory emf = 
 	       Persistence.createEntityManagerFactory(
 	    		   "PruebaUsuario");
@@ -86,7 +92,11 @@ public class ServicioCondominio {
 			  
 		return query.getResultList();
 	}
-	public List<Condominio> consultarCondominiosDeUsuario (int idUser){
+	
+	@GET
+	@Path("consultarCondominiosDeUsuario")
+	@Produces({MediaType.APPLICATION_JSON})
+	public List<Condominio> consultarCondominiosDeUsuario (@QueryParam("idUser") int idUser){
 		EntityManagerFactory emf = 
 	       Persistence.createEntityManagerFactory(
 	    		   "PruebaUsuario");

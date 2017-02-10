@@ -3,6 +3,8 @@ package ec.edu.epn.adminusr.modelo.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import ec.edu.epn.adminusr.modelo.entity.vo.UsuarioVO;
+
 
 /**
  * The persistent class for the USUARIO database table.
@@ -62,6 +64,15 @@ public class Usuario implements Serializable {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public UsuarioVO toUsuarioVO() {
+		UsuarioVO usuario = new UsuarioVO();
+		usuario.setIdUsuario(this.getIdUsuario());
+		usuario.setNombreCompleto(this.getNombreCompleto());
+		usuario.setUsername(this.getUsername());
+		usuario.setClave(this.getClave());
+		return usuario;
 	}
 
 }
