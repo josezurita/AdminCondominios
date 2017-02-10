@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ec.edu.epn.adminusr.modelo.entity.Usuario;
 import ec.edu.epn.adminusr.modelo.service.ServicioUsuario;
 
 /**
@@ -36,15 +37,16 @@ public class EditarUsuario extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String txtNombre = request.getParameter("txtNombre");
-		String txtUsername = request.getParameter("txtUsername");
-		String txtClave = request.getParameter("txtClave");
+		Usuario user = new Usuario();
+		user.setNombreCompleto(request.getParameter("txtNombre"));
+		user.setUsername(request.getParameter("txtUsername"));
+		user.setClave(request.getParameter("txtClave"));
 		String txtConfrmClave = request.getParameter("txtConfrmClave");
 		
-		if(txtClave.equals(txtConfrmClave)||txtClave.length()>7){
+		if(user.getClave().equals(txtConfrmClave)||user.getClave().length()>7){
 			//Invocación Modelo
 			ServicioUsuario su = new ServicioUsuario();
-			String resultado = su.actualizarUsuario(1, txtNombre, txtUsername, txtClave);
+			String resultado = su.actualizarUsuario(user);
 			request.setAttribute("msgExito", resultado);
 			request.getRequestDispatcher("adminUsr.jsp").forward(request, response);
 		}
