@@ -1,6 +1,5 @@
 package ec.edu.epn.adminusr.modelo.service;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -8,7 +7,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -18,7 +16,6 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import ec.edu.epn.adminusr.modelo.entity.Condominio;
-import ec.edu.epn.adminusr.modelo.entity.Usuario;
 import ec.edu.epn.adminusr.modelo.entity.vo.UsuarioVO;
 
 @Path("ServicioCondominio")
