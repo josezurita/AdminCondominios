@@ -38,10 +38,10 @@ public class EditarCondominio extends HttpServlet {
 		
 		
 		//Invocación Modelo
-		ServicioCondominio sp = new ServicioCondominio();
-		String resultado = sp.actualizarCondominio(Integer.parseInt(txtIdCondominio),Integer.parseInt(txtUsuario), txtNombre, txtDireccion, txtDescripcion, txtTelefono, txtLogo,new BigDecimal(txtBalance) );
-		request.setAttribute("msgExito", resultado);
-		request.getRequestDispatcher("adminCon.jsp").forward(request, response);
+//		ServicioCondominio sp = new ServicioCondominio();
+//		String resultado = sp.actualizarCondominio(Integer.parseInt(txtIdCondominio),Integer.parseInt(txtUsuario), txtNombre, txtDireccion, txtDescripcion, txtTelefono, txtLogo,new BigDecimal(txtBalance) );
+//		request.setAttribute("msgExito", resultado);
+//		request.getRequestDispatcher("adminCon.jsp").forward(request, response);
 		
 	}
 
