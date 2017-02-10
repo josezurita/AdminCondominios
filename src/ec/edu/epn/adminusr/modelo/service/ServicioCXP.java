@@ -22,7 +22,6 @@ import ec.edu.epn.adminusr.modelo.entity.CuentasXPagar;
 import ec.edu.epn.adminusr.modelo.entity.Proveedore;
 
 @Path("ServicioCXP")
-@Produces("application/json")
 public class ServicioCXP {
 	
 	@POST

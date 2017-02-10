@@ -23,7 +23,7 @@ import ec.edu.epn.adminusr.modelo.entity.CuentasXPagar;
 import ec.edu.epn.adminusr.modelo.entity.Proveedore;
 import ec.edu.epn.adminusr.modelo.entity.UnidadHabitacional;
 
-
+@Path("ServicioCXC")
 public class ServicioCXC {
 	
 	@POST

@@ -22,7 +22,6 @@ import ec.edu.epn.adminusr.modelo.entity.Usuario;
 import ec.edu.epn.adminusr.modelo.entity.vo.UsuarioVO;
 
 @Path("ServicioUsuario")
-@Produces("application/json")
 public class ServicioUsuario {
 	
 	@POST
